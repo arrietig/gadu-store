@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadu Store — Vinos Selectos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ======= MODAL VERIFICACIÓN DE EDAD ======= -->
+    <div id="age-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-deco">
+                <div class="modal-line"></div>
+                <span class="modal-icon">&#9670;</span>
+                <div class="modal-line"></div>
+            </div>
+            <h2 class="modal-title">Gadu Store</h2>
+            <p class="modal-sub">Vinos &amp; Espumantes Selectos</p>
+            <div class="modal-divider"></div>
+            <p class="modal-text">Este sitio contiene contenido relacionado con bebidas alcohólicas.</p>
+            <p class="modal-question">¿Eres mayor de 18 años?</p>
+            <div class="modal-buttons">
+                <button id="yes-btn" class="btn-age-yes">Sí, soy mayor de edad</button>
+                <button id="no-btn" class="btn-age-no">No, soy menor</button>
+            </div>
+            <p class="modal-legal">Al ingresar confirmas que eres mayor de edad y aceptas el consumo responsable.</p>
+        </div>
+    </div>
+
+    <!-- ======= PANTALLA MENOR DE EDAD ======= -->
+    <div id="underage-block" class="underage-screen" style="display:none;">
+        <span class="underage-icon">&#9670;</span>
+        <h2>Acceso Restringido</h2>
+        <p>Debes ser mayor de 18 años para ingresar a este sitio.</p>
+    </div>
+
+    <!-- ======= CONTENIDO PRINCIPAL ======= -->
+    <div id="main-content" style="display:none;">
+
+        <!-- NAV -->
+        <header id="navbar">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-gem">&#9670;</span>
+                    <span class="logo-text">Gadu Store</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#marcas">Marcas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <button class="cart-pill" onclick="scrollToPedido()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span id="cart-count">0</span>
+                </button>
+                <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+                <a href="#catalogo" onclick="toggleMenu()">Catálogo</a>
+                <a href="#marcas" onclick="toggleMenu()">Marcas</a>
+                <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section id="inicio" class="hero">
+            <div class="hero-bg-pattern"></div>
+            <div class="hero-content">
+                <p class="hero-eyebrow"><span class="eyebrow-gem">&#9670;</span> Selección Premium</p>
+                <h1 class="hero-title">Los Mejores Vinos<br><em>Te Esperan</em></h1>
+                <p class="hero-desc">Descubrí nuestra cuidadosa selección de vinos argentinos y espumantes de las mejores bodegas del mundo.</p>
+                <div class="hero-actions">
+                    <a href="#catalogo" class="btn-hero-primary">Ver Catálogo</a>
+                    <a href="https://wa.me/595993330038" target="_blank" class="btn-hero-wa">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Consultar
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="bottles-scene">
+                    <div class="bottle-wrap b-left">
+                        <div class="bottle">
+                            <div class="bottle-cap"></div>
+                            <div class="bottle-neck"></div>
+                            <div class="bottle-shoulder"></div>
+                            <div class="bottle-body">
+                                <div class="bottle-label"></div>
+                                <div class="bottle-shine"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottle-wrap b-center">
+                        <div class="bottle bottle-green">
+                            <div class="bottle-cap bc-green"></div>
+                            <div class="bottle-neck bn-green"></div>
+                            <div class="bottle-shoulder bs-green"></div>
+                            <div class="bottle-body bb-green">
+                                <div class="bottle-label bl-green"></div>
+                                <div class="bottle-shine"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottle-wrap b-right">
+                        <div class="bottle bottle-gold">
+                            <div class="bottle-cap bc-gold"></div>
+                            <div class="bottle-neck bn-gold"></div>
+                            <div class="bottle-shoulder bs-gold"></div>
+                            <div class="bottle-body bb-gold">
+                                <div class="bottle-label bl-gold"></div>
+                                <div class="bottle-shine"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-glow"></div>
+            </div>
+        </section>
+
+        <!-- MARCAS BANNER -->
+        <section id="marcas" class="brands-bar">
+            <div class="brands-tag">Nuestras Marcas</div>
+            <div class="marquee-wrap">
+                <div class="marquee-inner" id="marquee-inner">
+                    <!-- JS duplica el contenido -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO -->
+        <section id="catalogo" class="catalog-section">
+            <div class="section-head">
+                <p class="section-eyebrow"><span class="eyebrow-gem">&#9670;</span> Selección Premium</p>
+                <h2 class="section-title">Nuestro Catálogo</h2>
+                <p class="section-sub">Deslizá para descubrir toda nuestra selección · <span id="wine-count">0</span> vinos disponibles</p>
+            </div>
+            <div class="catalog-wrapper">
+                <button class="slide-btn slide-prev" id="slide-prev" onclick="scrollCatalog(-1)" aria-label="Anterior">&#8249;</button>
+                <div class="catalog-track" id="catalog-track"></div>
+                <button class="slide-btn slide-next" id="slide-next" onclick="scrollCatalog(1)" aria-label="Siguiente">&#8250;</button>
+            </div>
+            <div class="catalog-dots" id="catalog-dots"></div>
+        </section>
+
+        <!-- RESUMEN DE PEDIDO -->
+        <section id="pedido" class="cart-section">
+            <div class="section-head">
+                <p class="section-eyebrow"><span class="eyebrow-gem">&#9670;</span> Tu Selección</p>
+                <h2 class="section-title">Resumen del Pedido</h2>
+            </div>
+            <div class="cart-inner">
+                <div id="cart-empty" class="cart-empty-state">
+                    <div class="empty-icon">&#9670;</div>
+                    <p>Todavía no seleccionaste ningún vino.</p>
+                    <a href="#catalogo" class="btn-go-catalog">Explorar Catálogo</a>
+                </div>
+                <div id="cart-filled" class="cart-filled-state">
+                    <div class="cart-table-wrap">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio Unit.</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-tbody"></tbody>
+                        </table>
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-total-block">
+                            <span class="total-label">Total del pedido</span>
+                            <span class="total-value" id="cart-total">0 Gs</span>
+                        </div>
+                        <div class="cart-footer-btns">
+                            <button class="btn-clear-cart" onclick="clearCart()">Limpiar</button>
+                            <button class="btn-send-wa" onclick="sendWhatsAppOrder()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Enviar por WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="contact-section">
+            <div class="contact-inner">
+                <div class="contact-info">
+                    <p class="section-eyebrow"><span class="eyebrow-gem">&#9670;</span> Contacto</p>
+                    <h2 class="contact-title">Gadu Store</h2>
+                    <p class="contact-desc">Estamos para ayudarte a elegir el vino perfecto para cada ocasión. Escribinos y te asesoramos.</p>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-dot">&#9670;</span>
+                            <span>+595 993 330 038</span>
+                        </li>
+                        <li>
+                            <span class="contact-dot">&#9670;</span>
+                            <span>Paraguay</span>
+                        </li>
+                        <li>
+                            <span class="contact-dot">&#9670;</span>
+                            <span>Lunes a Sábado · 9:00 – 20:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-ctas">
+                    <a href="https://wa.me/595993330038" target="_blank" class="cta-whatsapp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Chatear por WhatsApp
+                    </a>
+                    <a href="https://www.instagram.com/gadu_storepy/" target="_blank" class="cta-instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Seguinos en Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-gem">&#9670;</span>
+                    <span class="footer-name">Gadu Store</span>
+                </div>
+                <p class="footer-tagline">Vinos selectos para cada momento especial</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/gadu_storepy/" target="_blank" class="fsocial-btn fsocial-ig">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/595993330038" target="_blank" class="fsocial-btn fsocial-wa">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+                <p class="footer-legal">© 2024 Gadu Store &nbsp;·&nbsp; Todos los derechos reservados &nbsp;·&nbsp; Consumo responsable +18</p>
+            </div>
+        </footer>
+
+    </div><!-- /main-content -->
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/595993330038" target="_blank" class="wa-float" id="wa-float" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

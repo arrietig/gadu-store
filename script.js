@@ -2,6 +2,68 @@
    GADU STORE — script.js
    ============================================= */
 
+/* =============================================
+   HERO SLIDESHOW
+   ============================================= */
+(function () {
+    const INTERVAL = 6000; // ms entre cambios
+    let current = 0;
+    let timer;
+
+    function initSlideshow() {
+        const slides = document.querySelectorAll('.hero-slideshow .slide');
+        const dotsWrap = document.getElementById('hero-indicators');
+        if (!slides.length || !dotsWrap) return;
+
+        const total = slides.length;
+
+        // Crear indicadores
+        dotsWrap.innerHTML = '';
+        slides.forEach((_, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'hero-dot' + (i === 0 ? ' active' : '');
+            btn.setAttribute('aria-label', `Imagen ${i + 1}`);
+            btn.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(btn);
+        });
+
+        // Activar primera slide
+        goTo(0);
+        timer = setInterval(() => goTo((current + 1) % total), INTERVAL);
+    }
+
+    function goTo(idx) {
+        const slides = document.querySelectorAll('.hero-slideshow .slide');
+        const dots   = document.querySelectorAll('.hero-dot');
+        if (!slides.length) return;
+
+        // Quitar active de todas
+        slides.forEach(s => { s.classList.remove('active'); });
+        dots.forEach(d => d.classList.remove('active'));
+
+        // Pequeño delay para reiniciar la animación CSS
+        void slides[idx].offsetWidth;
+        slides[idx].classList.add('active');
+        if (dots[idx]) dots[idx].classList.add('active');
+        current = idx;
+    }
+
+    // Iniciar cuando el sitio es desbloqueado por la verificación de edad
+    document.addEventListener('DOMContentLoaded', () => {
+        // Si ya está verificado, iniciar de inmediato
+        if (sessionStorage.getItem('gaduAge')) {
+            initSlideshow();
+        }
+        // Si no, esperar al click de confirmación
+        const yesBtn = document.getElementById('yes-btn');
+        if (yesBtn) {
+            yesBtn.addEventListener('click', () => {
+                setTimeout(initSlideshow, 100);
+            }, { once: true });
+        }
+    });
+})();
+
 /* ===== DATOS DE VINOS ===== */
 const WINES = [
     { id:  1, name: "Cordero con Piel de Lobo",         type: "Tinto",     price: 170000,  color: "#722F37" },

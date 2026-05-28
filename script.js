@@ -47,8 +47,8 @@ const BRAND_GROUPS = [
         label: 'Mosquita Muerta',
         sub:   'Cordero · Malcriado · Espumante',
         desc:  'La bodega irreverente de Mendoza. Cordero con Piel de Lobo, Malcriado y Mosquita Muerta — vinos con identidad y carácter único.',
-        img:   'IMAGENES/Fondo de inicios/cosechas.jpg',
-        logo:  null,   /* → 'IMAGENES/logos/mosquita.png' */
+        img:   'IMAGENES/logos/mosquita-muerta/presentacion.jpg',
+        logo:  'IMAGENES/logos/mosquita-muerta/logo.png',
         side:  'left'
     },
     {

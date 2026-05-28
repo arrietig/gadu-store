@@ -335,6 +335,17 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     flex-shrink:0;
 }
 .marquee-inner .mdot { color:var(--gold); font-size:.5rem; }
+.marquee-logo {
+    height: 34px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+    opacity: .65;
+    transition: opacity .25s;
+}
+.marquee-inner:hover .marquee-logo { opacity: 1; }
 @keyframes marquee {
     from { transform:translateX(0); }
     to   { transform:translateX(-50%); }

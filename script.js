@@ -113,10 +113,21 @@ const BRAND_GROUPS = [
 ];
 
 const BRANDS_MARQUEE = [
-    "Catena Zapata","Mosquita Muerta","Escorihuela Gascón",
-    "El Gran Enemigo","Chandon","Freixenet","Rutini","Angélica Zapata",
-    "Cordero con Piel de Lobo","Malcriado","Luigi Bosca","Federico de Alvear",
-    "Santa Julia","Jorge Rubio","Saint Felicien","Aperol",
+    { src:'IMAGENES/logos/catena-zapata/logo-oficial.png',  alt:'Catena Zapata'       },
+    { src:'IMAGENES/logos/mosquita-muerta/logo.png',        alt:'Mosquita Muerta'      },
+    { src:'IMAGENES/logos/gran-enemigo/logo.png',           alt:'El Gran Enemigo'      },
+    { src:'IMAGENES/logos/escorihuela/logo.png',            alt:'Escorihuela Gascón'   },
+    { src:'IMAGENES/logos/rutini/logo.png',                 alt:'Rutini Wines'         },
+    { src:'IMAGENES/logos/espumantes/chandon.png',          alt:'Chandon'              },
+    { src:'IMAGENES/logos/espumantes/freixenet.png',        alt:'Freixenet'            },
+    { src:'IMAGENES/logos/espumantes/alvear.png',           alt:'Federico de Alvear'   },
+    { src:'IMAGENES/logos/espumantes/aperol.png',           alt:'Aperol'               },
+    { src:'IMAGENES/logos/otras-marcas/luigi.png',          alt:'Luigi Bosca'          },
+    { src:'IMAGENES/logos/otras-marcas/saint.png',          alt:'Saint Felicien'       },
+    { src:'IMAGENES/logos/otras-marcas/santajulia.png',     alt:'Santa Julia'          },
+    { src:'IMAGENES/logos/otras-marcas/oveja.png',          alt:'Oveja Black'          },
+    { src:'IMAGENES/logos/otras-marcas/4monos.png',         alt:'4 Monos Locos'        },
+    { src:'IMAGENES/logos/otras-marcas/primavera.png',      alt:'Casa La Primavera'    },
 ];
 
 /* ===== CARRITO ===== */
@@ -205,7 +216,7 @@ function buildMarquee() {
     if (!inner) return;
     const items = [...BRANDS_MARQUEE, ...BRANDS_MARQUEE];
     inner.innerHTML = items.map((b,i) =>
-        `<span>${b}</span>${i < items.length-1 ? '<span class="mdot">◆</span>' : ''}`
+        `<img src="${b.src}" alt="${b.alt}" class="marquee-logo">${i < items.length-1 ? '<span class="mdot">◆</span>' : ''}`
     ).join('');
 }
 

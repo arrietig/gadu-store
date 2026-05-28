@@ -96,10 +96,18 @@ const BRAND_GROUPS = [
     {
         id:    'otros',
         label: 'Más Marcas',
-        sub:   'Mosquita Muerta · Rutini · Luigi Bosca · y más',
-        desc:  'Nuestra selección completa incluye joyas de bodegas como Rutini, Mosquita Muerta, Luigi Bosca, Oveja Black y muchos más.',
-        img:   'IMAGENES/Fondo de inicios/tintos.jpg',
+        sub:   'Luigi Bosca · Saint Felicien · Santa Julia · Oveja Black · y más',
+        desc:  'Nuestra selección completa incluye joyas de bodegas como Luigi Bosca, Oveja Black, Santa Julia, 4 Monos y muchos más.',
+        img:   'IMAGENES/logos/otras-marcas/presentacion.jpg',
         logo:  null,
+        logos: [
+            'IMAGENES/logos/otras-marcas/luigi.png',
+            'IMAGENES/logos/otras-marcas/saint.png',
+            'IMAGENES/logos/otras-marcas/santajulia.png',
+            'IMAGENES/logos/otras-marcas/oveja.png',
+            'IMAGENES/logos/otras-marcas/4monos.png',
+            'IMAGENES/logos/otras-marcas/primavera.png',
+        ],
         side:  'left'
     },
 ];

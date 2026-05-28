@@ -56,8 +56,8 @@ const BRAND_GROUPS = [
         label: 'El Gran Enemigo',
         sub:   'Gualtallari · Malbec de Altura',
         desc:  'El ícono de Alejandro Vigil. Un Cabernet Franc que desafía todo lo conocido del vino mendocino. Gualtallari en su máxima expresión.',
-        img:   'IMAGENES/Fondo de inicios/blend-tintas.jpg',
-        logo:  null,
+        img:   'IMAGENES/logos/gran-enemigo/presentacion.jpg',
+        logo:  'IMAGENES/logos/gran-enemigo/logo.png',
         side:  'right'
     },
     {

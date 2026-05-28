@@ -14,7 +14,7 @@ const WINES = [
     { id:  7, name:"D.V. Catena Cabernet Malbec",      brand:"catena",       type:"Malbec",    price:430000,  color:"#4A0E0E" },
     { id:  8, name:"D.V. Catena Malbec Malbec",        brand:"catena",       type:"Malbec",    price:540000,  color:"#3D0B0B" },
     { id:  9, name:"Angélica Zapata Malbec",           brand:"catena",       type:"Malbec",    price:600000,  color:"#2E0808" },
-    { id: 10, name:"Rutini Malbec",                    brand:"premium",      type:"Malbec",    price:720000,  color:"#1A0505" },
+    { id: 10, name:"Rutini Malbec",                    brand:"rutini",       type:"Malbec",    price:720000,  color:"#1A0505" },
     { id: 11, name:"El Gran Enemigo Gualtallari",      brand:"enemigo",      type:"Malbec",    price:1600000, color:"#0D0303" },
     { id: 12, name:"Freixenet",                        brand:"espumantes",   type:"Espumante", price:240000,  color:"#5C4A00" },
     { id: 13, name:"Chandon",                          brand:"espumantes",   type:"Espumante", price:550000,  color:"#6B5B2E" },
@@ -67,6 +67,15 @@ const BRAND_GROUPS = [
         desc:  'Una de las bodegas históricas de Mendoza. Su Gran Reserva es sinónimo de elegancia y tradición vitivinícola argentina.',
         img:   'IMAGENES/logos/escorihuela/presentacion.jpg',
         logo:  'IMAGENES/logos/escorihuela/logo.png',
+        side:  'left'
+    },
+    {
+        id:    'rutini',
+        label: 'Rutini Wines',
+        sub:   'Malbec · Colección',
+        desc:  'Desde Mendoza, Rutini elabora Malbecs de altura con carácter único. Tradición italiana en tierras argentinas desde 1885.',
+        img:   'IMAGENES/logos/rutini/presentacion.jpg',
+        logo:  'IMAGENES/logos/rutini/logo.png',
         side:  'left'
     },
     {

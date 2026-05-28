@@ -255,6 +255,23 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     color: var(--gold); margin-bottom: .9rem !important;
 }
 
+/* Grid de múltiples logos (Espumantes) */
+.brand-logos-grid {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    gap: .75rem 1.25rem;
+    margin-bottom: .75rem;
+}
+.brand-logo-multi {
+    height: 36px; width: auto;
+    max-width: 110px;
+    object-fit: contain;
+    filter: none;
+    opacity: .85;
+    transition: opacity .2s;
+}
+.brand-panel:hover .brand-logo-multi { opacity: 1; }
+
 .panel-line {
     width:44px; height:1px;
     background:var(--text-dark);

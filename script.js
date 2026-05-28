@@ -81,10 +81,16 @@ const BRAND_GROUPS = [
     {
         id:    'espumantes',
         label: 'Espumantes',
-        sub:   'Chandon · Freixenet · Federico de Alvear',
+        sub:   'Chandon · Freixenet · Federico de Alvear · Aperol',
         desc:  'Para cada celebración. Desde el clásico Chandon hasta la elegancia de Freixenet y la frescura de Federico de Alvear.',
         img:   'IMAGENES/Fondo de inicios/mosquita.jpg',
         logo:  null,
+        logos: [
+            'IMAGENES/logos/espumantes/chandon.png',
+            'IMAGENES/logos/espumantes/freixenet.png',
+            'IMAGENES/logos/espumantes/alvear.png',
+            'IMAGENES/logos/espumantes/aperol.png',
+        ],
         side:  'right'
     },
     {
@@ -154,17 +160,21 @@ function buildBrandPanels() {
         const pair = document.createElement('div');
         pair.className = 'pair';
 
+        const logoHtml = brand.logos
+            ? `<div class="brand-logos-grid">${brand.logos.map(l =>
+                `<img src="${l}" alt="${brand.label}" class="brand-logo-multi">`).join('')}</div>`
+            : brand.logo
+                ? `<img src="${brand.logo}" alt="${brand.label}" class="brand-logo-img">`
+                : `<p class="brand-logo-text">${brand.label}</p>`;
+
         const textPanel = `
             <div class="panel panel-text brand-panel" onclick="filterByBrand('${brand.id}')">
                 <div class="panel-text-inner">
-                    ${brand.logo
-                        ? `<img src="${brand.logo}" alt="${brand.label}" class="brand-logo-img">`
-                        : `<p class="brand-logo-text">${brand.label}</p>`
-                    }
+                    ${logoHtml}
                     <div class="panel-line"></div>
                     <p class="brand-sub">${brand.sub}</p>
                     <p>${brand.desc}</p>
-                    <span class="panel-cta">VER VINOS →</span>
+                    <span class="panel-cta">VER CATÁLOGO →</span>
                 </div>
             </div>`;
 

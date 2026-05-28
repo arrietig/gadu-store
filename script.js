@@ -134,6 +134,24 @@ const BRANDS_MARQUEE = [
 let cart = {};
 let activeBrand = 'all';
 
+/* Persistencia del carrito en sessionStorage */
+function saveCart() {
+    const data = {};
+    Object.keys(cart).forEach(id => { data[id] = { qty: cart[id].qty }; });
+    sessionStorage.setItem('gaduCart', JSON.stringify(data));
+}
+function loadCart() {
+    try {
+        const saved = sessionStorage.getItem('gaduCart');
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        Object.keys(data).forEach(id => {
+            const wine = WINES.find(w => w.id === parseInt(id));
+            if (wine) cart[parseInt(id)] = { wine, qty: data[id].qty };
+        });
+    } catch(e) {}
+}
+
 function fmtPrice(n) { return n.toLocaleString('es-PY') + ' Gs'; }
 
 function lighten(hex, amt) {
@@ -148,7 +166,11 @@ function revealSite() {
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('wa-float').classList.add('show');
     sessionStorage.setItem('gaduAge','1');
-    initSite();
+    if (document.getElementById('catalog-grid')) {
+        initCatalogPage();
+    } else {
+        initSite();
+    }
 }
 
 if (sessionStorage.getItem('gaduAge')) { revealSite(); }
@@ -161,10 +183,20 @@ document.getElementById('no-btn').addEventListener('click', () => {
 
 /* ===== INICIALIZACIÓN ===== */
 function initSite() {
+    loadCart();
     buildBrandPanels();
     buildMarquee();
+    updateCartUI();
+    initNavScroll();
+}
+
+function initCatalogPage() {
+    loadCart();
+    const params = new URLSearchParams(window.location.search);
+    activeBrand = params.get('marca') || 'all';
+    buildCatalogHero(activeBrand);
     buildFilterBtns();
-    buildCatalog();
+    buildCatalogGrid();
     updateCartUI();
     initNavScroll();
 }
@@ -187,7 +219,7 @@ function buildBrandPanels() {
                 : `<p class="brand-logo-text">${brand.label}</p>`;
 
         const textPanel = `
-            <div class="panel panel-text brand-panel" onclick="filterByBrand('${brand.id}')">
+            <div class="panel panel-text brand-panel" onclick="window.location='catalogo.html?marca=${brand.id}'">
                 <div class="panel-text-inner">
                     ${logoHtml}
                     <div class="panel-line"></div>
@@ -198,7 +230,7 @@ function buildBrandPanels() {
             </div>`;
 
         const imgPanel = `
-            <div class="panel panel-img" onclick="filterByBrand('${brand.id}')">
+            <div class="panel panel-img" onclick="window.location='catalogo.html?marca=${brand.id}'">
                 <div class="panel-img-inner" style="background-image:url('${brand.img}')"></div>
             </div>`;
 
@@ -231,29 +263,74 @@ function buildFilterBtns() {
     ];
 
     wrap.innerHTML = filters.map(f =>
-        `<button class="filter-btn ${f.id === 'all' ? 'active' : ''}"
+        `<button class="filter-btn ${f.id === activeBrand ? 'active' : ''}"
                  onclick="filterByBrand('${f.id}')">${f.label}</button>`
     ).join('');
 }
 
-/* ===== FILTRAR POR MARCA ===== */
+/* ===== FILTRAR POR MARCA (página catálogo) ===== */
 function filterByBrand(brandId) {
     activeBrand = brandId;
-
-    /* Actualiza botones activos */
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() ===
-            (brandId === 'all' ? 'Todos' : BRAND_GROUPS.find(b=>b.id===brandId)?.label));
-    });
-
-    buildCatalog();
-
-    /* Scroll suave al catálogo */
-    const cat = document.getElementById('catalogo');
-    if (cat) cat.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const url = brandId === 'all' ? 'catalogo.html' : `catalogo.html?marca=${brandId}`;
+    history.replaceState(null, '', url);
+    buildCatalogHero(brandId);
+    buildFilterBtns();
+    buildCatalogGrid();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ===== CATÁLOGO ===== */
+/* ===== HERO DE MARCA (página catálogo) ===== */
+function buildCatalogHero(brandId) {
+    const hero = document.getElementById('catalog-hero');
+    if (!hero) return;
+
+    if (brandId === 'all') {
+        hero.style.backgroundImage = '';
+        hero.innerHTML = `
+            <div class="catalog-hero-inner">
+                <p class="catalog-hero-eyebrow">SELECCIÓN COMPLETA</p>
+                <h1 class="catalog-hero-title">CATÁLOGO DE VINOS</h1>
+                <p class="catalog-hero-sub">Todas nuestras marcas y etiquetas</p>
+            </div>
+            <a href="index.html" class="catalog-back-link">← VOLVER</a>`;
+        return;
+    }
+
+    const brand = BRAND_GROUPS.find(b => b.id === brandId);
+    if (!brand) return;
+
+    const logoHtml = brand.logos
+        ? `<div class="catalog-hero-logos">${brand.logos.map(l =>
+            `<img src="${l}" alt="${brand.label}" class="catalog-hero-logo-multi">`).join('')}</div>`
+        : brand.logo
+            ? `<img src="${brand.logo}" alt="${brand.label}" class="catalog-hero-logo">`
+            : `<p class="catalog-hero-title">${brand.label.toUpperCase()}</p>`;
+
+    hero.style.backgroundImage = `url('${brand.img}')`;
+    hero.innerHTML = `
+        <div class="catalog-hero-inner">
+            ${logoHtml}
+            <p class="catalog-hero-sub">${brand.sub}</p>
+        </div>
+        <a href="index.html" class="catalog-back-link">← VOLVER</a>`;
+}
+
+/* ===== GRILLA DE CATÁLOGO (página catálogo) ===== */
+function buildCatalogGrid() {
+    const grid = document.getElementById('catalog-grid');
+    if (!grid) return;
+
+    const filtered = activeBrand === 'all'
+        ? WINES
+        : WINES.filter(w => w.brand === activeBrand);
+
+    const countEl = document.getElementById('wine-count');
+    if (countEl) countEl.textContent = filtered.length;
+    grid.innerHTML = '';
+    filtered.forEach(wine => grid.appendChild(createCard(wine)));
+}
+
+/* ===== CATÁLOGO (carrusel — legacy, ya no se usa en producción) ===== */
 function buildCatalog() {
     const track = document.getElementById('catalog-track');
     if (!track) return;
@@ -323,6 +400,7 @@ function changeQty(id, delta) {
     else { const wine = WINES.find(w=>w.id===id); cart[id]={wine,qty:next}; }
     refreshCard(id);
     updateCartUI();
+    saveCart();
 }
 
 function addToCart(id) {
@@ -330,6 +408,7 @@ function addToCart(id) {
     if (!cart[id]) cart[id]={wine,qty:1};
     refreshCard(id);
     updateCartUI();
+    saveCart();
     openCartPanel();
 }
 
@@ -344,11 +423,12 @@ function refreshCard(id) {
     }
 }
 
-function removeItem(id) { delete cart[id]; refreshCard(id); updateCartUI(); }
+function removeItem(id) { delete cart[id]; refreshCard(id); updateCartUI(); saveCart(); }
 
 function clearCart() {
     Object.keys(cart).forEach(id => { delete cart[id]; refreshCard(parseInt(id)); });
     updateCartUI();
+    saveCart();
 }
 
 /* ===== UI CARRITO ===== */

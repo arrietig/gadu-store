@@ -91,7 +91,7 @@ const BRAND_GROUPS = [
             'IMAGENES/logos/espumantes/alvear.png',
             'IMAGENES/logos/espumantes/aperol.png',
         ],
-        side:  'right'
+        side:  'left'
     },
     {
         id:    'otros',

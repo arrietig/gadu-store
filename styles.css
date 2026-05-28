@@ -235,8 +235,7 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     width: 100%; height: auto;
     display: block; margin: 0 auto 1.1rem;
     object-fit: contain;
-    /* convierte a oscuro para que sea visible sobre el panel beige */
-    filter: brightness(0) opacity(0.82);
+    filter: none; /* logo ya viene con color oscuro sobre fondo transparente */
 }
 
 /* Placeholder de texto cuando no hay logo */

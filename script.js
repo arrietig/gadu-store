@@ -39,7 +39,7 @@ const BRAND_GROUPS = [
         sub:   'D.V. Catena · Angélica Zapata',
         desc:  'La familia Catena lleva generaciones elaborando los vinos más premiados de Argentina. Malbecs de altura que definen una era.',
         img:   'IMAGENES/Fondo de inicios/catena.jpg',
-        logo:  'IMAGENES/logos/catena-zapata/logo-dv.png',
+        logo:  'IMAGENES/logos/catena-zapata/logo-oficial.png',
         side:  'right' /* imagen a la derecha */
     },
     {

@@ -65,8 +65,8 @@ const BRAND_GROUPS = [
         label: 'Escorihuela Gascón',
         sub:   'Gran Reserva · Donde Manda Capitán',
         desc:  'Una de las bodegas históricas de Mendoza. Su Gran Reserva es sinónimo de elegancia y tradición vitivinícola argentina.',
-        img:   'IMAGENES/Fondo de inicios/stand-vinos.jpg',
-        logo:  null,
+        img:   'IMAGENES/logos/escorihuela/presentacion.jpg',
+        logo:  'IMAGENES/logos/escorihuela/logo.png',
         side:  'left'
     },
     {

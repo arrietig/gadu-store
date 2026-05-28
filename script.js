@@ -5,30 +5,43 @@
 
 /* ===== VINOS ===== */
 const WINES = [
-    { id:  1, name:"Cordero con Piel de Lobo",            brand:"mosquita",     type:"Tinto",     price:170000,  color:"#722F37" },
-    { id:  2, name:"Cordero con Piel de Lobo Chardonnay", brand:"mosquita",    type:"Blanco",    price:180000,  color:"#8B7020" },
-    { id:  3, name:"Donde Manda Capitán",              brand:"escorihuela",  type:"Tinto",     price:180000,  color:"#722F37" },
-    { id:  4, name:"4 Monos Locos",                    brand:"otros",        type:"Tinto",     price:190000,  color:"#6B1A1A" },
-    { id:  5, name:"Saint Felicien",                   brand:"otros",        type:"Blanco",    price:310000,  color:"#8B7020" },
-    { id:  6, name:"Escorihuela Gascón Gran Reserva",  brand:"escorihuela",  type:"Tinto",     price:540000,  color:"#4A0E0E" },
-    { id:  7, name:"D.V. Catena Cabernet Malbec",      brand:"catena",       type:"Malbec",    price:430000,  color:"#4A0E0E" },
-    { id:  8, name:"D.V. Catena Malbec Malbec",        brand:"catena",       type:"Malbec",    price:540000,  color:"#3D0B0B" },
-    { id:  9, name:"Angélica Zapata Malbec",           brand:"catena",       type:"Malbec",    price:600000,  color:"#2E0808" },
-    { id: 10, name:"Rutini Malbec",                    brand:"rutini",       type:"Malbec",    price:720000,  color:"#1A0505" },
-    { id: 11, name:"El Gran Enemigo Gualtallari",      brand:"enemigo",      type:"Malbec",    price:1600000, color:"#0D0303" },
-    { id: 12, name:"Freixenet",                        brand:"espumantes",   type:"Espumante", price:240000,  color:"#5C4A00" },
-    { id: 13, name:"Chandon",                          brand:"espumantes",   type:"Espumante", price:550000,  color:"#6B5B2E" },
-    { id: 14, name:"Chandon Mini",                     brand:"espumantes",   type:"Espumante", price:565000,  color:"#7A6A3E" },
-    { id: 15, name:"Aperol",                           brand:"otros",        type:"Licor",     price:310000,  color:"#C25A00" },
-    { id: 16, name:"Cordero Espumante",                brand:"mosquita",     type:"Espumante", price:230000,  color:"#8B7355" },
-    { id: 17, name:"Santa Julia Dulce",                brand:"otros",        type:"Dulce",     price:250000,  color:"#8B3A62" },
-    { id: 18, name:"El Gran Capitán Malbec",           brand:"otros",        type:"Malbec",    price:300000,  color:"#722F37" },
-    { id: 19, name:"Jorge Rubio PV",                   brand:"otros",        type:"Tinto",     price:300000,  color:"#5A1F25" },
-    { id: 20, name:"Mosquita Muerta",                  brand:"mosquita",     type:"Tinto",     price:300000,  color:"#722F37" },
-    { id: 24, name:"Malcriado",                        brand:"mosquita",     type:"Tinto",     price:300000,  color:"#5A1020" },
-    { id: 21, name:"Oveja Black Malbec y Red Blend",   brand:"otros",        type:"Malbec",    price:160000,  color:"#1A1A1A" },
-    { id: 22, name:"Luigi Bosca Malbec",               brand:"otros",        type:"Malbec",    price:370000,  color:"#722F37" },
-    { id: 23, name:"Federico de Alvear Espumante",     brand:"espumantes",   type:"Espumante", price:170000,  color:"#6B5B2E" },
+    /* ── Catena Zapata ── */
+    { id: 25, name:"Nicassia",                             brand:"catena",      type:"Malbec",    price:270000,  color:"#8B3A3A" },
+    { id:  7, name:"D.V. Catena Cabernet Malbec",          brand:"catena",      type:"Malbec",    price:430000,  color:"#4A0E0E" },
+    { id:  8, name:"D.V. Catena Malbec Malbec",            brand:"catena",      type:"Malbec",    price:540000,  color:"#3D0B0B" },
+    { id: 26, name:"D.V. Catena Chardonnay",               brand:"catena",      type:"Blanco",    price:540000,  color:"#8B7020" },
+    { id:  9, name:"Angélica Zapata Malbec",               brand:"catena",      type:"Malbec",    price:600000,  color:"#2E0808" },
+    /* ── Mosquita Muerta ── */
+    { id: 27, name:"Pispi",                                brand:"mosquita",    type:"Tinto",     price:300000,  color:"#722F37" },
+    { id: 28, name:"Perro Callejero",                      brand:"mosquita",    type:"Tinto",     price:230000,  color:"#8B3A3A" },
+    { id: 29, name:"Sapo de Otro Pozo",                    brand:"mosquita",    type:"Tinto",     price:400000,  color:"#5A1020" },
+    { id: 24, name:"Malcriado",                            brand:"mosquita",    type:"Tinto",     price:580000,  color:"#5A1020" },
+    { id:  1, name:"Cordero con Piel de Lobo",             brand:"mosquita",    type:"Tinto",     price:170000,  color:"#722F37" },
+    { id:  2, name:"Cordero con Piel de Lobo Chardonnay",  brand:"mosquita",    type:"Blanco",    price:180000,  color:"#8B7020" },
+    { id: 20, name:"Mosquita Muerta",                      brand:"mosquita",    type:"Tinto",     price:260000,  color:"#722F37" },
+    { id: 16, name:"Cordero Espumante",                    brand:"mosquita",    type:"Espumante", price:230000,  color:"#8B7355" },
+    /* ── El Gran Enemigo ── */
+    { id: 11, name:"El Gran Enemigo Gualtallari",          brand:"enemigo",     type:"Malbec",    price:1600000, color:"#0D0303" },
+    /* ── Escorihuela Gascón ── */
+    { id:  6, name:"Escorihuela Gascón Gran Reserva",      brand:"escorihuela", type:"Tinto",     price:540000,  color:"#4A0E0E" },
+    /* ── Rutini ── */
+    { id: 10, name:"Rutini Malbec",                        brand:"rutini",      type:"Malbec",    price:720000,  color:"#1A0505" },
+    /* ── Espumantes ── */
+    { id: 23, name:"Federico de Alvear Espumante",         brand:"espumantes",  type:"Espumante", price:170000,  color:"#6B5B2E" },
+    { id: 12, name:"Freixenet",                            brand:"espumantes",  type:"Espumante", price:240000,  color:"#5C4A00" },
+    { id: 13, name:"Chandon",                              brand:"espumantes",  type:"Espumante", price:550000,  color:"#6B5B2E" },
+    { id: 14, name:"Chandon Mini",                         brand:"espumantes",  type:"Espumante", price:565000,  color:"#7A6A3E" },
+    { id: 15, name:"Aperol",                               brand:"espumantes",  type:"Licor",     price:320000,  color:"#C25A00" },
+    /* ── Más Marcas ── */
+    { id:  3, name:"Donde Manda Capitán",                  brand:"otros",       type:"Tinto",     price:180000,  color:"#722F37" },
+    { id:  4, name:"4 Monos Locos",                        brand:"otros",       type:"Tinto",     price:190000,  color:"#6B1A1A" },
+    { id:  5, name:"Saint Felicien",                       brand:"otros",       type:"Blanco",    price:320000,  color:"#8B7020" },
+    { id: 17, name:"Santa Julia Dulce",                    brand:"otros",       type:"Dulce",     price:350000,  color:"#8B3A62" },
+    { id: 18, name:"El Gran Capitán Malbec",               brand:"otros",       type:"Malbec",    price:300000,  color:"#722F37" },
+    { id: 19, name:"Jorge Rubio PV",                       brand:"otros",       type:"Tinto",     price:300000,  color:"#5A1F25" },
+    { id: 21, name:"Oveja Black Malbec y Red Blend",       brand:"otros",       type:"Malbec",    price:160000,  color:"#1A1A1A" },
+    { id: 22, name:"Luigi Bosca Malbec",                   brand:"otros",       type:"Malbec",    price:375000,  color:"#722F37" },
+    { id: 30, name:"Alma Mora",                            brand:"otros",       type:"Tinto",     price:200000,  color:"#8B2020" },
 ];
 
 /* ===== MARCAS ===== */
@@ -36,7 +49,7 @@ const BRAND_GROUPS = [
     {
         id:    'catena',
         label: 'Catena Zapata',
-        sub:   'D.V. Catena · Angélica Zapata',
+        sub:   'Nicassia · D.V. Catena · Angélica Zapata',
         desc:  'La familia Catena lleva generaciones elaborando los vinos más premiados de Argentina. Malbecs de altura que definen una era.',
         img:   'IMAGENES/logos/catena-zapata/catena.jpg',
         logo:  'IMAGENES/logos/catena-zapata/logo-oficial.png',
@@ -45,8 +58,8 @@ const BRAND_GROUPS = [
     {
         id:    'mosquita',
         label: 'Mosquita Muerta',
-        sub:   'Cordero · Malcriado · Espumante',
-        desc:  'La bodega irreverente de Mendoza. Cordero con Piel de Lobo, Malcriado y Mosquita Muerta — vinos con identidad y carácter único.',
+        sub:   'Cordero · Pispi · Perro Callejero · Malcriado · y más',
+        desc:  'La bodega irreverente de Mendoza. Cordero con Piel de Lobo, Pispi, Perro Callejero, Sapo de Otro Pozo y Malcriado — vinos con identidad única.',
         img:   'IMAGENES/logos/mosquita-muerta/presentacion.jpg',
         logo:  'IMAGENES/logos/mosquita-muerta/logo.png',
         side:  'left'
@@ -63,7 +76,7 @@ const BRAND_GROUPS = [
     {
         id:    'escorihuela',
         label: 'Escorihuela Gascón',
-        sub:   'Gran Reserva · Donde Manda Capitán',
+        sub:   'Gran Reserva',
         desc:  'Una de las bodegas históricas de Mendoza. Su Gran Reserva es sinónimo de elegancia y tradición vitivinícola argentina.',
         img:   'IMAGENES/logos/escorihuela/presentacion.jpg',
         logo:  'IMAGENES/logos/escorihuela/logo.png',
@@ -96,8 +109,8 @@ const BRAND_GROUPS = [
     {
         id:    'otros',
         label: 'Más Marcas',
-        sub:   'Luigi Bosca · Saint Felicien · Santa Julia · Oveja Black · y más',
-        desc:  'Nuestra selección completa incluye joyas de bodegas como Luigi Bosca, Oveja Black, Santa Julia, 4 Monos y muchos más.',
+        sub:   'Luigi Bosca · Alma Mora · Oveja Black · Saint Felicien · y más',
+        desc:  'Nuestra selección incluye joyas de bodegas como Luigi Bosca, Alma Mora, Oveja Black, Santa Julia, 4 Monos y muchos más.',
         img:   'IMAGENES/logos/otras-marcas/presentacion.jpg',
         logo:  null,
         logos: [
@@ -128,6 +141,7 @@ const BRANDS_MARQUEE = [
     { src:'IMAGENES/logos/otras-marcas/oveja.png',          alt:'Oveja Black'          },
     { src:'IMAGENES/logos/otras-marcas/4monos.png',         alt:'4 Monos Locos'        },
     { src:'IMAGENES/logos/otras-marcas/primavera.png',      alt:'Casa La Primavera'    },
+    { src:'IMAGENES/logos/espumantes/aperol.png',           alt:'Aperol'               },
 ];
 
 /* ===== CARRITO ===== */

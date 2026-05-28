@@ -76,7 +76,7 @@ const BRAND_GROUPS = [
         desc:  'Desde Mendoza, Rutini elabora Malbecs de altura con carácter único. Tradición italiana en tierras argentinas desde 1885.',
         img:   'IMAGENES/logos/rutini/presentacion.jpg',
         logo:  'IMAGENES/logos/rutini/logo.png',
-        side:  'left'
+        side:  'right'
     },
     {
         id:    'espumantes',

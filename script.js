@@ -5,8 +5,8 @@
 
 /* ===== VINOS ===== */
 const WINES = [
-    { id:  1, name:"Cordero con Piel de Lobo",         brand:"cordero",      type:"Tinto",     price:170000,  color:"#722F37" },
-    { id:  2, name:"Cordero con Piel de Lobo Blanco",  brand:"cordero",      type:"Blanco",    price:180000,  color:"#8B7020" },
+    { id:  1, name:"Cordero con Piel de Lobo",            brand:"mosquita",     type:"Tinto",     price:170000,  color:"#722F37" },
+    { id:  2, name:"Cordero con Piel de Lobo Chardonnay", brand:"mosquita",    type:"Blanco",    price:180000,  color:"#8B7020" },
     { id:  3, name:"Donde Manda Capitán",              brand:"escorihuela",  type:"Tinto",     price:180000,  color:"#722F37" },
     { id:  4, name:"4 Monos Locos",                    brand:"otros",        type:"Tinto",     price:190000,  color:"#6B1A1A" },
     { id:  5, name:"Saint Felicien",                   brand:"otros",        type:"Blanco",    price:310000,  color:"#8B7020" },
@@ -20,11 +20,12 @@ const WINES = [
     { id: 13, name:"Chandon",                          brand:"espumantes",   type:"Espumante", price:550000,  color:"#6B5B2E" },
     { id: 14, name:"Chandon Mini",                     brand:"espumantes",   type:"Espumante", price:565000,  color:"#7A6A3E" },
     { id: 15, name:"Aperol",                           brand:"otros",        type:"Licor",     price:310000,  color:"#C25A00" },
-    { id: 16, name:"Cordero Espumante",                brand:"cordero",      type:"Espumante", price:230000,  color:"#8B7355" },
+    { id: 16, name:"Cordero Espumante",                brand:"mosquita",     type:"Espumante", price:230000,  color:"#8B7355" },
     { id: 17, name:"Santa Julia Dulce",                brand:"otros",        type:"Dulce",     price:250000,  color:"#8B3A62" },
     { id: 18, name:"El Gran Capitán Malbec",           brand:"otros",        type:"Malbec",    price:300000,  color:"#722F37" },
     { id: 19, name:"Jorge Rubio PV",                   brand:"otros",        type:"Tinto",     price:300000,  color:"#5A1F25" },
-    { id: 20, name:"Mosquita Muerta",                  brand:"otros",        type:"Tinto",     price:300000,  color:"#722F37" },
+    { id: 20, name:"Mosquita Muerta",                  brand:"mosquita",     type:"Tinto",     price:300000,  color:"#722F37" },
+    { id: 24, name:"Malcriado",                        brand:"mosquita",     type:"Tinto",     price:300000,  color:"#5A1020" },
     { id: 21, name:"Oveja Black Malbec y Red Blend",   brand:"otros",        type:"Malbec",    price:160000,  color:"#1A1A1A" },
     { id: 22, name:"Luigi Bosca Malbec",               brand:"otros",        type:"Malbec",    price:370000,  color:"#722F37" },
     { id: 23, name:"Federico de Alvear Espumante",     brand:"espumantes",   type:"Espumante", price:170000,  color:"#6B5B2E" },
@@ -42,12 +43,12 @@ const BRAND_GROUPS = [
         side:  'right' /* imagen a la derecha */
     },
     {
-        id:    'cordero',
-        label: 'Cordero con Piel de Lobo',
-        sub:   'Tinto · Blanco · Espumante',
-        desc:  'Vinos de carácter, sin rodeos. Tintos con cuerpo, blancos frescos y espumantes vibrantes bajo una misma etiqueta icónica.',
+        id:    'mosquita',
+        label: 'Mosquita Muerta',
+        sub:   'Cordero · Malcriado · Espumante',
+        desc:  'La bodega irreverente de Mendoza. Cordero con Piel de Lobo, Malcriado y Mosquita Muerta — vinos con identidad y carácter único.',
         img:   'IMAGENES/Fondo de inicios/cosechas.jpg',
-        logo:  null,
+        logo:  null,   /* → 'IMAGENES/logos/mosquita.png' */
         side:  'left'
     },
     {
@@ -89,9 +90,9 @@ const BRAND_GROUPS = [
 ];
 
 const BRANDS_MARQUEE = [
-    "Catena Zapata","Cordero con Piel de Lobo","Escorihuela Gascón",
+    "Catena Zapata","Mosquita Muerta","Escorihuela Gascón",
     "El Gran Enemigo","Chandon","Freixenet","Rutini","Angélica Zapata",
-    "Mosquita Muerta","Oveja Black","Luigi Bosca","Federico de Alvear",
+    "Cordero con Piel de Lobo","Malcriado","Luigi Bosca","Federico de Alvear",
     "Santa Julia","Jorge Rubio","Saint Felicien","Aperol",
 ];
 

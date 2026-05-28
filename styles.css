@@ -22,7 +22,7 @@
 html { scroll-behavior:smooth; }
 body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--dark);
+    background: var(--beige);
     color: var(--beige);
     line-height: 1.6;
     overflow-x: hidden;
@@ -302,7 +302,7 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
    ============================================= */
 .catalog-section {
     padding: 5rem 0 4rem;
-    background: var(--dark);
+    background: #010101;
 }
 .catalog-head {
     text-align:center; padding:0 2rem;
@@ -328,7 +328,7 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     -webkit-overflow-scrolling:touch;
     padding:1rem 2rem 2rem;
     scrollbar-width:thin;
-    scrollbar-color: var(--gold) var(--dark-2);
+    scrollbar-color: var(--gold) #010101;
 }
 .catalog-track::-webkit-scrollbar { height:3px; }
 .catalog-track::-webkit-scrollbar-thumb { background:var(--gold); }
@@ -350,7 +350,7 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
 /* WINE CARD */
 .wine-card {
     min-width:210px; max-width:210px;
-    background:var(--dark-2);
+    background:#010101;
     border:1px solid rgba(228,224,215,.08);
     flex-shrink:0;
     display:flex; flex-direction:column;
@@ -405,7 +405,7 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
 }
 .card-name {
     font-size:.82rem; font-weight:500;
-    color:var(--beige-lt); line-height:1.35;
+    color:var(--beige); line-height:1.35;
     margin-bottom:.5rem; flex:1; letter-spacing:.02em;
 }
 .card-price {
@@ -573,6 +573,11 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     max-width:900px; margin:0 auto;
     display:grid; grid-template-columns:1fr 1fr;
     gap:4rem; align-items:center;
+}
+.contact-logo {
+    height: 60px; width:auto;
+    display:block; margin-bottom:1.25rem;
+    filter: invert(0);
 }
 .contact-info h2 {
     font-size:1.1rem; font-weight:700;

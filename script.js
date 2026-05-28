@@ -83,7 +83,7 @@ const BRAND_GROUPS = [
         label: 'Espumantes',
         sub:   'Chandon · Freixenet · Federico de Alvear · Aperol',
         desc:  'Para cada celebración. Desde el clásico Chandon hasta la elegancia de Freixenet y la frescura de Federico de Alvear.',
-        img:   'IMAGENES/Fondo de inicios/mosquita.jpg',
+        img:   'IMAGENES/logos/espumantes/presentacion.jpg',
         logo:  null,
         logos: [
             'IMAGENES/logos/espumantes/chandon.png',

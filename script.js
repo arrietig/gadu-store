@@ -108,7 +108,7 @@ const BRAND_GROUPS = [
             'IMAGENES/logos/otras-marcas/4monos.png',
             'IMAGENES/logos/otras-marcas/primavera.png',
         ],
-        side:  'left'
+        side:  'right'
     },
 ];
 

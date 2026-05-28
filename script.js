@@ -1,43 +1,103 @@
 /* =============================================
-   GADU STORE — script.js  v2
+   GADU STORE — script.js  v3
+   Sistema de marcas con filtro de catálogo
    ============================================= */
 
 /* ===== VINOS ===== */
 const WINES = [
-    { id:  1, name:"Cordero con Piel de Lobo",         type:"Tinto",     price:170000,  color:"#722F37" },
-    { id:  2, name:"Cordero con Piel de Lobo Blanco",  type:"Blanco",    price:180000,  color:"#8B7020" },
-    { id:  3, name:"Donde Manda Capitán",              type:"Tinto",     price:180000,  color:"#722F37" },
-    { id:  4, name:"4 Monos Locos",                    type:"Tinto",     price:190000,  color:"#6B1A1A" },
-    { id:  5, name:"Saint Felicien",                   type:"Blanco",    price:310000,  color:"#8B7020" },
-    { id:  6, name:"Escorihuela Gascón Gran Reserva",  type:"Tinto",     price:540000,  color:"#4A0E0E" },
-    { id:  7, name:"D.V. Catena Cabernet Malbec",      type:"Malbec",    price:430000,  color:"#4A0E0E" },
-    { id:  8, name:"D.V. Catena Malbec Malbec",        type:"Malbec",    price:540000,  color:"#3D0B0B" },
-    { id:  9, name:"Angélica Zapata Malbec",           type:"Malbec",    price:600000,  color:"#2E0808" },
-    { id: 10, name:"Rutini Malbec",                    type:"Malbec",    price:720000,  color:"#1A0505" },
-    { id: 11, name:"El Gran Enemigo Gualtallari",      type:"Malbec",    price:1600000, color:"#0D0303" },
-    { id: 12, name:"Freixenet",                        type:"Espumante", price:240000,  color:"#5C4A00" },
-    { id: 13, name:"Chandon",                          type:"Espumante", price:550000,  color:"#6B5B2E" },
-    { id: 14, name:"Chandon Mini",                     type:"Espumante", price:565000,  color:"#7A6A3E" },
-    { id: 15, name:"Aperol",                           type:"Licor",     price:310000,  color:"#C25A00" },
-    { id: 16, name:"Cordero Espumante",                type:"Espumante", price:230000,  color:"#8B7355" },
-    { id: 17, name:"Santa Julia Dulce",                type:"Dulce",     price:250000,  color:"#8B3A62" },
-    { id: 18, name:"El Gran Capitán Malbec",           type:"Malbec",    price:300000,  color:"#722F37" },
-    { id: 19, name:"Jorge Rubio PV",                   type:"Tinto",     price:300000,  color:"#5A1F25" },
-    { id: 20, name:"Mosquita Muerta",                  type:"Tinto",     price:300000,  color:"#722F37" },
-    { id: 21, name:"Oveja Black Malbec y Red Blend",   type:"Malbec",    price:160000,  color:"#1A1A1A" },
-    { id: 22, name:"Luigi Bosca Malbec",               type:"Malbec",    price:370000,  color:"#722F37" },
-    { id: 23, name:"Federico de Alvear Espumante",     type:"Espumante", price:170000,  color:"#6B5B2E" },
+    { id:  1, name:"Cordero con Piel de Lobo",         brand:"cordero",      type:"Tinto",     price:170000,  color:"#722F37" },
+    { id:  2, name:"Cordero con Piel de Lobo Blanco",  brand:"cordero",      type:"Blanco",    price:180000,  color:"#8B7020" },
+    { id:  3, name:"Donde Manda Capitán",              brand:"escorihuela",  type:"Tinto",     price:180000,  color:"#722F37" },
+    { id:  4, name:"4 Monos Locos",                    brand:"otros",        type:"Tinto",     price:190000,  color:"#6B1A1A" },
+    { id:  5, name:"Saint Felicien",                   brand:"otros",        type:"Blanco",    price:310000,  color:"#8B7020" },
+    { id:  6, name:"Escorihuela Gascón Gran Reserva",  brand:"escorihuela",  type:"Tinto",     price:540000,  color:"#4A0E0E" },
+    { id:  7, name:"D.V. Catena Cabernet Malbec",      brand:"catena",       type:"Malbec",    price:430000,  color:"#4A0E0E" },
+    { id:  8, name:"D.V. Catena Malbec Malbec",        brand:"catena",       type:"Malbec",    price:540000,  color:"#3D0B0B" },
+    { id:  9, name:"Angélica Zapata Malbec",           brand:"catena",       type:"Malbec",    price:600000,  color:"#2E0808" },
+    { id: 10, name:"Rutini Malbec",                    brand:"premium",      type:"Malbec",    price:720000,  color:"#1A0505" },
+    { id: 11, name:"El Gran Enemigo Gualtallari",      brand:"enemigo",      type:"Malbec",    price:1600000, color:"#0D0303" },
+    { id: 12, name:"Freixenet",                        brand:"espumantes",   type:"Espumante", price:240000,  color:"#5C4A00" },
+    { id: 13, name:"Chandon",                          brand:"espumantes",   type:"Espumante", price:550000,  color:"#6B5B2E" },
+    { id: 14, name:"Chandon Mini",                     brand:"espumantes",   type:"Espumante", price:565000,  color:"#7A6A3E" },
+    { id: 15, name:"Aperol",                           brand:"otros",        type:"Licor",     price:310000,  color:"#C25A00" },
+    { id: 16, name:"Cordero Espumante",                brand:"cordero",      type:"Espumante", price:230000,  color:"#8B7355" },
+    { id: 17, name:"Santa Julia Dulce",                brand:"otros",        type:"Dulce",     price:250000,  color:"#8B3A62" },
+    { id: 18, name:"El Gran Capitán Malbec",           brand:"otros",        type:"Malbec",    price:300000,  color:"#722F37" },
+    { id: 19, name:"Jorge Rubio PV",                   brand:"otros",        type:"Tinto",     price:300000,  color:"#5A1F25" },
+    { id: 20, name:"Mosquita Muerta",                  brand:"otros",        type:"Tinto",     price:300000,  color:"#722F37" },
+    { id: 21, name:"Oveja Black Malbec y Red Blend",   brand:"otros",        type:"Malbec",    price:160000,  color:"#1A1A1A" },
+    { id: 22, name:"Luigi Bosca Malbec",               brand:"otros",        type:"Malbec",    price:370000,  color:"#722F37" },
+    { id: 23, name:"Federico de Alvear Espumante",     brand:"espumantes",   type:"Espumante", price:170000,  color:"#6B5B2E" },
 ];
 
-const BRANDS = [
-    "Cordero con Piel de Lobo","Saint Felicien","Escorihuela Gascón",
-    "D.V. Catena","Angélica Zapata","Rutini","El Gran Enemigo",
-    "Freixenet","Chandon","Aperol","Santa Julia","Mosquita Muerta",
-    "Oveja Black","Luigi Bosca","Federico de Alvear","Jorge Rubio",
+/* ===== MARCAS ===== */
+const BRAND_GROUPS = [
+    {
+        id:    'catena',
+        label: 'Catena Zapata',
+        sub:   'D.V. Catena · Angélica Zapata',
+        desc:  'La familia Catena lleva generaciones elaborando los vinos más premiados de Argentina. Malbecs de altura que definen una era.',
+        img:   'IMAGENES/Fondo de inicios/catena.jpg',
+        logo:  null,   /* → reemplazar con: 'IMAGENES/logos/catena.png' */
+        side:  'right' /* imagen a la derecha */
+    },
+    {
+        id:    'cordero',
+        label: 'Cordero con Piel de Lobo',
+        sub:   'Tinto · Blanco · Espumante',
+        desc:  'Vinos de carácter, sin rodeos. Tintos con cuerpo, blancos frescos y espumantes vibrantes bajo una misma etiqueta icónica.',
+        img:   'IMAGENES/Fondo de inicios/cosechas.jpg',
+        logo:  null,
+        side:  'left'
+    },
+    {
+        id:    'enemigo',
+        label: 'El Gran Enemigo',
+        sub:   'Gualtallari · Malbec de Altura',
+        desc:  'El ícono de Alejandro Vigil. Un Cabernet Franc que desafía todo lo conocido del vino mendocino. Gualtallari en su máxima expresión.',
+        img:   'IMAGENES/Fondo de inicios/blend-tintas.jpg',
+        logo:  null,
+        side:  'right'
+    },
+    {
+        id:    'escorihuela',
+        label: 'Escorihuela Gascón',
+        sub:   'Gran Reserva · Donde Manda Capitán',
+        desc:  'Una de las bodegas históricas de Mendoza. Su Gran Reserva es sinónimo de elegancia y tradición vitivinícola argentina.',
+        img:   'IMAGENES/Fondo de inicios/stand-vinos.jpg',
+        logo:  null,
+        side:  'left'
+    },
+    {
+        id:    'espumantes',
+        label: 'Espumantes',
+        sub:   'Chandon · Freixenet · Federico de Alvear',
+        desc:  'Para cada celebración. Desde el clásico Chandon hasta la elegancia de Freixenet y la frescura de Federico de Alvear.',
+        img:   'IMAGENES/Fondo de inicios/mosquita.jpg',
+        logo:  null,
+        side:  'right'
+    },
+    {
+        id:    'otros',
+        label: 'Más Marcas',
+        sub:   'Mosquita Muerta · Rutini · Luigi Bosca · y más',
+        desc:  'Nuestra selección completa incluye joyas de bodegas como Rutini, Mosquita Muerta, Luigi Bosca, Oveja Black y muchos más.',
+        img:   'IMAGENES/Fondo de inicios/tintos.jpg',
+        logo:  null,
+        side:  'left'
+    },
+];
+
+const BRANDS_MARQUEE = [
+    "Catena Zapata","Cordero con Piel de Lobo","Escorihuela Gascón",
+    "El Gran Enemigo","Chandon","Freixenet","Rutini","Angélica Zapata",
+    "Mosquita Muerta","Oveja Black","Luigi Bosca","Federico de Alvear",
+    "Santa Julia","Jorge Rubio","Saint Felicien","Aperol",
 ];
 
 /* ===== CARRITO ===== */
 let cart = {};
+let activeBrand = 'all';
 
 function fmtPrice(n) { return n.toLocaleString('es-PY') + ' Gs'; }
 
@@ -66,29 +126,106 @@ document.getElementById('no-btn').addEventListener('click', () => {
 
 /* ===== INICIALIZACIÓN ===== */
 function initSite() {
+    buildBrandPanels();
     buildMarquee();
+    buildFilterBtns();
     buildCatalog();
     updateCartUI();
     initNavScroll();
+}
+
+/* ===== PANELES DE MARCAS ===== */
+function buildBrandPanels() {
+    const main = document.getElementById('inicio');
+    if (!main) return;
+    main.innerHTML = '';
+
+    BRAND_GROUPS.forEach(brand => {
+        const pair = document.createElement('div');
+        pair.className = 'pair';
+
+        const textPanel = `
+            <div class="panel panel-text brand-panel" onclick="filterByBrand('${brand.id}')">
+                <div class="panel-text-inner">
+                    ${brand.logo
+                        ? `<img src="${brand.logo}" alt="${brand.label}" class="brand-logo-img">`
+                        : `<p class="brand-logo-text">${brand.label}</p>`
+                    }
+                    <div class="panel-line"></div>
+                    <p class="brand-sub">${brand.sub}</p>
+                    <p>${brand.desc}</p>
+                    <span class="panel-cta">VER VINOS →</span>
+                </div>
+            </div>`;
+
+        const imgPanel = `
+            <div class="panel panel-img" onclick="filterByBrand('${brand.id}')">
+                <div class="panel-img-inner" style="background-image:url('${brand.img}')"></div>
+            </div>`;
+
+        pair.innerHTML = brand.side === 'right'
+            ? textPanel + imgPanel
+            : imgPanel + textPanel;
+
+        main.appendChild(pair);
+    });
 }
 
 /* ===== MARQUEE ===== */
 function buildMarquee() {
     const inner = document.getElementById('marquee-inner');
     if (!inner) return;
-    const items = [...BRANDS,...BRANDS];
-    inner.innerHTML = items.map((b,i)=>
-        `<span>${b}</span>${i<items.length-1?'<span class="mdot">◆</span>':''}`
+    const items = [...BRANDS_MARQUEE, ...BRANDS_MARQUEE];
+    inner.innerHTML = items.map((b,i) =>
+        `<span>${b}</span>${i < items.length-1 ? '<span class="mdot">◆</span>' : ''}`
     ).join('');
+}
+
+/* ===== FILTROS DE CATÁLOGO ===== */
+function buildFilterBtns() {
+    const wrap = document.getElementById('brand-filters');
+    if (!wrap) return;
+
+    const filters = [
+        { id: 'all', label: 'Todos' },
+        ...BRAND_GROUPS.map(b => ({ id: b.id, label: b.label }))
+    ];
+
+    wrap.innerHTML = filters.map(f =>
+        `<button class="filter-btn ${f.id === 'all' ? 'active' : ''}"
+                 onclick="filterByBrand('${f.id}')">${f.label}</button>`
+    ).join('');
+}
+
+/* ===== FILTRAR POR MARCA ===== */
+function filterByBrand(brandId) {
+    activeBrand = brandId;
+
+    /* Actualiza botones activos */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() ===
+            (brandId === 'all' ? 'Todos' : BRAND_GROUPS.find(b=>b.id===brandId)?.label));
+    });
+
+    buildCatalog();
+
+    /* Scroll suave al catálogo */
+    const cat = document.getElementById('catalogo');
+    if (cat) cat.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /* ===== CATÁLOGO ===== */
 function buildCatalog() {
     const track = document.getElementById('catalog-track');
     if (!track) return;
-    document.getElementById('wine-count').textContent = WINES.length;
+
+    const filtered = activeBrand === 'all'
+        ? WINES
+        : WINES.filter(w => w.brand === activeBrand);
+
+    document.getElementById('wine-count').textContent = filtered.length;
     track.innerHTML = '';
-    WINES.forEach(wine => track.appendChild(createCard(wine)));
+    filtered.forEach(wine => track.appendChild(createCard(wine)));
     updateScrollBtns();
     track.addEventListener('scroll', updateScrollBtns);
 }
@@ -183,7 +320,7 @@ function updateCartUI() {
 
     document.getElementById('cart-count').textContent = totalQty;
 
-    const emptyEl  = document.getElementById('cart-empty-msg');
+    const emptyEl   = document.getElementById('cart-empty-msg');
     const itemsWrap = document.getElementById('cart-items-wrap');
 
     if (items.length === 0) {
@@ -226,9 +363,9 @@ function openCartPanel() {
 }
 
 function toggleCartPanel() {
-    const panel = document.getElementById('cart-panel');
+    const panel    = document.getElementById('cart-panel');
     const backdrop = document.getElementById('cart-backdrop');
-    const isOpen = panel.classList.contains('open');
+    const isOpen   = panel.classList.contains('open');
     panel.classList.toggle('open');
     backdrop.classList.toggle('show');
     document.body.style.overflow = isOpen ? '' : 'hidden';

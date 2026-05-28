@@ -222,24 +222,45 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
 .panel-text {
     background: var(--beige);
     display:flex; align-items:center; justify-content:center;
+    cursor: pointer;
 }
 .panel-text-inner {
     text-align:center; padding:2.5rem;
-    max-width:380px;
+    max-width:400px;
 }
-.panel-text-inner h2 {
-    font-size: clamp(.95rem, 2vw, 1.3rem);
-    font-weight:700; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--text-dark);
-    margin-bottom:1.1rem;
+
+/* Logo de marca (imagen cuando esté disponible) */
+.brand-logo-img {
+    max-width: 180px; max-height: 80px;
+    width: auto; height: auto;
+    display: block; margin: 0 auto 1.1rem;
+    object-fit: contain;
 }
+
+/* Placeholder de texto cuando no hay logo */
+.brand-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    font-weight: 400; font-style: italic;
+    letter-spacing: .06em;
+    color: var(--text-dark);
+    margin-bottom: 1.1rem;
+    line-height: 1.2;
+}
+
+.brand-sub {
+    font-size: .7rem; font-weight: 500;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .9rem !important;
+}
+
 .panel-line {
     width:44px; height:1px;
     background:var(--text-dark);
     margin:0 auto 1.25rem;
 }
 .panel-text-inner p {
-    font-size:.82rem; color:var(--text-mid);
+    font-size:.8rem; color:var(--text-mid);
     line-height:1.75; margin-bottom:1.5rem;
     font-weight:300; letter-spacing:.04em;
 }
@@ -252,10 +273,14 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     padding-bottom:2px;
     transition:var(--trans);
 }
-.panel-cta:hover {
+.panel-text:hover .panel-cta {
     color:var(--gold);
     border-color:var(--gold);
 }
+
+/* Hover sutil en panel de texto */
+.brand-panel { transition: background .3s ease; }
+.brand-panel:hover { background: #dedad0; }
 
 /* =============================================
    MARCAS BANNER
@@ -319,7 +344,35 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     background:var(--gold);
     margin:0 auto 1rem;
 }
-.catalog-sub { font-size:.78rem; color:var(--text-mid); letter-spacing:.08em; }
+.catalog-sub { font-size:.78rem; color:var(--beige); letter-spacing:.08em; margin-bottom:1.5rem; }
+
+/* Filtros de marca */
+.brand-filters {
+    display: flex; flex-wrap: wrap;
+    gap: .5rem; justify-content: center;
+    margin-top: 1.25rem;
+}
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(228,224,215,.2);
+    color: rgba(228,224,215,.55);
+    padding: .4rem 1rem;
+    font-family: inherit; font-size: .65rem;
+    font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: var(--trans);
+    cursor: pointer;
+}
+.filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+.filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+}
 
 .catalog-wrapper { position:relative; display:flex; align-items:center; }
 .catalog-track {

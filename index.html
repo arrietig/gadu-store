@@ -79,100 +79,8 @@
         </div>
     </header>
 
-    <!-- GRID DE PANELES -->
-    <main id="inicio">
-
-        <!-- PAR 1: texto izq + foto der -->
-        <div class="pair">
-            <div class="panel panel-text">
-                <div class="panel-text-inner">
-                    <h2>TINTOS &amp; MALBECS</h2>
-                    <div class="panel-line"></div>
-                    <p>Cordero con Piel de Lobo · Rutini · El Gran Enemigo · Angélica Zapata y más.</p>
-                    <a href="#catalogo" class="panel-cta">VER CATÁLOGO</a>
-                </div>
-            </div>
-            <div class="panel panel-img">
-                <div class="panel-img-inner" style="background-image:url('IMAGENES/Fondo de inicios/cosechas.jpg')"></div>
-            </div>
-        </div>
-
-        <!-- PAR 2: foto izq + texto der -->
-        <div class="pair">
-            <div class="panel panel-img">
-                <div class="panel-img-inner" style="background-image:url('IMAGENES/Fondo de inicios/catena.jpg')"></div>
-            </div>
-            <div class="panel panel-text">
-                <div class="panel-text-inner">
-                    <h2>SELECCIÓN PREMIUM</h2>
-                    <div class="panel-line"></div>
-                    <p>D.V. Catena · Escorihuela Gascón · Angélica Zapata. Los mejores exponentes del vino argentino.</p>
-                    <a href="#catalogo" class="panel-cta">EXPLORAR</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- PAR 3: texto izq + foto der -->
-        <div class="pair">
-            <div class="panel panel-text">
-                <div class="panel-text-inner">
-                    <h2>ESPUMANTES</h2>
-                    <div class="panel-line"></div>
-                    <p>Chandon · Freixenet · Federico de Alvear · Cordero Espumante. Para cada celebración.</p>
-                    <a href="#catalogo" class="panel-cta">VER ESPUMANTES</a>
-                </div>
-            </div>
-            <div class="panel panel-img">
-                <div class="panel-img-inner" style="background-image:url('IMAGENES/Fondo de inicios/stand-vinos.jpg')"></div>
-            </div>
-        </div>
-
-        <!-- PAR 4: foto izq + texto der -->
-        <div class="pair">
-            <div class="panel panel-img">
-                <div class="panel-img-inner" style="background-image:url('IMAGENES/Fondo de inicios/mosquita.jpg')"></div>
-            </div>
-            <div class="panel panel-text">
-                <div class="panel-text-inner">
-                    <h2>NUESTRAS MARCAS</h2>
-                    <div class="panel-line"></div>
-                    <p>Trabajamos con las mejores bodegas argentinas. Calidad garantizada en cada botella.</p>
-                    <a href="#marcas" class="panel-cta">VER MARCAS</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- PAR 5: texto izq + foto der -->
-        <div class="pair">
-            <div class="panel panel-text">
-                <div class="panel-text-inner">
-                    <h2>HACÉ TU PEDIDO</h2>
-                    <div class="panel-line"></div>
-                    <p>Seleccioná tus vinos y envianos tu pedido directamente por WhatsApp. Rápido y sencillo.</p>
-                    <a href="https://wa.me/595993330038" target="_blank" class="panel-cta">PEDIR AHORA</a>
-                </div>
-            </div>
-            <div class="panel panel-img">
-                <div class="panel-img-inner" style="background-image:url('IMAGENES/Fondo de inicios/blend-tintas.jpg')"></div>
-            </div>
-        </div>
-
-        <!-- PAR 6: foto izq + texto der -->
-        <div class="pair">
-            <div class="panel panel-img">
-                <div class="panel-img-inner" style="background-image:url('IMAGENES/Fondo de inicios/tintos.jpg')"></div>
-            </div>
-            <div class="panel panel-text">
-                <div class="panel-text-inner">
-                    <h2>CONTACTO</h2>
-                    <div class="panel-line"></div>
-                    <p>+595 993 330 038<br>Lunes a Sábado · 9:00 – 20:00<br>Paraguay</p>
-                    <a href="#contacto" class="panel-cta">CONTACTARNOS</a>
-                </div>
-            </div>
-        </div>
-
-    </main>
+    <!-- GRID DE PANELES — generado por JS (buildBrandPanels) -->
+    <main id="inicio"></main>
 
     <!-- MARCAS BANNER -->
     <section id="marcas" class="brands-bar">
@@ -187,7 +95,8 @@
         <div class="catalog-head">
             <h2>CATÁLOGO DE VINOS</h2>
             <div class="section-line"></div>
-            <p class="catalog-sub">Deslizá para ver los <span id="wine-count">0</span> vinos disponibles</p>
+            <p class="catalog-sub"><span id="wine-count">0</span> vinos disponibles</p>
+            <div class="brand-filters" id="brand-filters"></div>
         </div>
         <div class="catalog-wrapper">
             <button class="slide-btn slide-prev" onclick="scrollCatalog(-1)">&#8249;</button>

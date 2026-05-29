@@ -6,11 +6,11 @@
 /* ===== VINOS ===== */
 const WINES = [
     /* ── Catena Zapata ── */
-    { id: 25, name:"Nicassia",                             brand:"catena",      type:"Malbec",    price:270000,  color:"#8B3A3A", photo:"IMAGENES/catalogo/catena/nicassia.png" },
-    { id:  7, name:"D.V. Catena Cabernet Malbec",          brand:"catena",      type:"Malbec",    price:430000,  color:"#4A0E0E", photo:"IMAGENES/catalogo/catena/dv-catena-cabernet-malbec.png" },
-    { id:  8, name:"D.V. Catena Malbec Malbec",            brand:"catena",      type:"Malbec",    price:540000,  color:"#3D0B0B", photo:"IMAGENES/catalogo/catena/dv-catena-malbec-malbec.png" },
-    { id: 26, name:"D.V. Catena Chardonnay",               brand:"catena",      type:"Blanco",    price:540000,  color:"#8B7020", photo:"IMAGENES/catalogo/catena/dv-catena-chardonnay.png" },
-    { id:  9, name:"Angélica Zapata Malbec",               brand:"catena",      type:"Malbec",    price:600000,  color:"#2E0808", photo:"IMAGENES/catalogo/catena/angelica-zapata-malbec.png" },
+    { id: 25, name:"Nicassia",                             brand:"catena",      type:"Malbec",    price:270000,  color:"#8B3A3A", photo:"IMAGENES/catalogo/catena/nicassia.jpg" },
+    { id:  7, name:"D.V. Catena Cabernet Malbec",          brand:"catena",      type:"Malbec",    price:430000,  color:"#4A0E0E", photo:"IMAGENES/catalogo/catena/dv-catena-cabernet-malbec.jpg" },
+    { id:  8, name:"D.V. Catena Malbec Malbec",            brand:"catena",      type:"Malbec",    price:540000,  color:"#3D0B0B", photo:"IMAGENES/catalogo/catena/dv-catena-malbec-malbec.jpg" },
+    { id: 26, name:"D.V. Catena Chardonnay",               brand:"catena",      type:"Blanco",    price:540000,  color:"#8B7020", photo:"IMAGENES/catalogo/catena/dv-catena-chardonnay.jpg" },
+    { id:  9, name:"Angélica Zapata Malbec",               brand:"catena",      type:"Malbec",    price:600000,  color:"#2E0808", photo:"IMAGENES/catalogo/catena/angelica-zapata-malbec.jpg" },
     /* ── Mosquita Muerta ── */
     { id: 27, name:"Pispi",                                brand:"mosquita",    type:"Tinto",     price:300000,  color:"#722F37", photo:"IMAGENES/catalogo/mosquita/pispi.webp" },
     { id: 28, name:"Perro Callejero",                      brand:"mosquita",    type:"Tinto",     price:230000,  color:"#8B3A3A", photo:"IMAGENES/catalogo/mosquita/perro-callejero.webp" },

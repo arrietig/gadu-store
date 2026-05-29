@@ -970,9 +970,32 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
 @media (max-width:680px) {
     .nav-links { display:none; }
     .hamburger { display:flex; }
-    .pair { flex-direction:column; height:auto; }
-    .panel { height:260px; flex:none; }
-    .panel-text { height:auto; padding:3rem 1.5rem; }
+
+    /* ── Zigzag móvil: mantener horizontal ── */
+    .pair {
+        flex-direction: row;
+        height: 52vw;
+        min-height: 180px;
+        max-height: 260px;
+    }
+    .panel { flex: 1; height: 100%; }
+
+    /* Texto en móvil — más compacto */
+    .panel-text-inner {
+        padding: 1.1rem 0.9rem;
+        gap: 0.4rem;
+    }
+    .brand-logo-img {
+        max-width: 120px;
+        max-height: 50px;
+        margin-bottom: 0.4rem;
+    }
+    .brand-logos-grid { gap: .3rem .6rem; margin-bottom: .3rem; }
+    .brand-logo-multi { height: 22px; max-width: 70px; }
+    .brand-sub { font-size: .55rem; letter-spacing: .08em; }
+    .panel-text-inner p { display: none; }   /* ocultar descripción larga */
+    .panel-cta { font-size: .55rem; letter-spacing: .12em; margin-top: .3rem; }
+
     .brands-label { position:static; padding:.5rem 1.5rem; display:block; text-align:center; }
     .marquee-inner { padding-left:1rem; }
     .cart-panel { width:100%; right:-100%; }

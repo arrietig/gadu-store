@@ -7,10 +7,10 @@
 const WINES = [
     /* ── Catena Zapata ── */
     { id: 25, name:"Nicassia",                             brand:"catena",      type:"Malbec",    price:270000,  color:"#8B3A3A" },
-    { id:  7, name:"D.V. Catena Cabernet Malbec",          brand:"catena",      type:"Malbec",    price:430000,  color:"#4A0E0E" },
-    { id:  8, name:"D.V. Catena Malbec Malbec",            brand:"catena",      type:"Malbec",    price:540000,  color:"#3D0B0B" },
+    { id:  7, name:"D.V. Catena Cabernet Malbec",          brand:"catena",      type:"Malbec",    price:430000,  color:"#4A0E0E", photo:"IMAGENES/catalogo/catena/dv-catena-cabernet-malbec.png" },
+    { id:  8, name:"D.V. Catena Malbec Malbec",            brand:"catena",      type:"Malbec",    price:540000,  color:"#3D0B0B", photo:"IMAGENES/catalogo/catena/dv-catena-malbec-malbec.png" },
     { id: 26, name:"D.V. Catena Chardonnay",               brand:"catena",      type:"Blanco",    price:540000,  color:"#8B7020" },
-    { id:  9, name:"Angélica Zapata Malbec",               brand:"catena",      type:"Malbec",    price:600000,  color:"#2E0808" },
+    { id:  9, name:"Angélica Zapata Malbec",               brand:"catena",      type:"Malbec",    price:600000,  color:"#2E0808", photo:"IMAGENES/catalogo/catena/angelica-zapata-malbec.png" },
     /* ── Mosquita Muerta ── */
     { id: 27, name:"Pispi",                                brand:"mosquita",    type:"Tinto",     price:300000,  color:"#722F37" },
     { id: 28, name:"Perro Callejero",                      brand:"mosquita",    type:"Tinto",     price:230000,  color:"#8B3A3A" },
@@ -366,17 +366,25 @@ function createCard(wine) {
     const card = document.createElement('div');
     card.className = 'wine-card';
     card.id = `card-${wine.id}`;
+
+    const visualHtml = wine.photo
+        ? `<div class="card-visual card-visual-photo" style="background:linear-gradient(150deg,${c}11,${c}33);">
+               <img src="${wine.photo}" alt="${wine.name}" class="card-photo">
+               <div class="card-photo-shine"></div>
+           </div>`
+        : `<div class="card-visual" style="background:linear-gradient(150deg,${c}22,${c}44);">
+               <div class="card-bottle-wrap">
+                   <div class="cb-cap"      style="background:${c};opacity:.8;"></div>
+                   <div class="cb-neck"     style="background:linear-gradient(180deg,${cl},${c});"></div>
+                   <div class="cb-shoulder" style="background:${c};"></div>
+                   <div class="cb-body"     style="background:linear-gradient(160deg,${cl},${c},${c}CC);">
+                       <div class="cb-label"></div><div class="cb-shine"></div>
+                   </div>
+               </div>
+           </div>`;
+
     card.innerHTML = `
-        <div class="card-visual" style="background:linear-gradient(150deg,${c}22,${c}44);">
-            <div class="card-bottle-wrap">
-                <div class="cb-cap"      style="background:${c};opacity:.8;"></div>
-                <div class="cb-neck"     style="background:linear-gradient(180deg,${cl},${c});"></div>
-                <div class="cb-shoulder" style="background:${c};"></div>
-                <div class="cb-body"     style="background:linear-gradient(160deg,${cl},${c},${c}CC);">
-                    <div class="cb-label"></div><div class="cb-shine"></div>
-                </div>
-            </div>
-        </div>
+        ${visualHtml}
         <div class="card-body">
             <span class="card-badge" style="background:${c};">${wine.type}</span>
             <p class="card-name">${wine.name}</p>
@@ -391,6 +399,30 @@ function createCard(wine) {
             </button>
         </div>`;
     return card;
+}
+
+/* ===== ANIMACIÓN VOLAR AL CARRITO ===== */
+function flyToCart(sourceEl) {
+    const cartBtn = document.querySelector('.cart-btn');
+    if (!sourceEl || !cartBtn) return;
+    const from = sourceEl.getBoundingClientRect();
+    const to   = cartBtn.getBoundingClientRect();
+
+    const dot = document.createElement('div');
+    dot.className = 'cart-fly-dot';
+    dot.style.cssText = `left:${from.left + from.width/2}px;top:${from.top + from.height/2}px;`;
+    document.body.appendChild(dot);
+
+    requestAnimationFrame(() => {
+        dot.style.transform = `translate(${to.left - from.left - from.width/2 + to.width/2}px,
+                                          ${to.top  - from.top  - from.height/2 + to.height/2}px) scale(0)`;
+        dot.style.opacity = '0';
+    });
+    setTimeout(() => {
+        dot.remove();
+        cartBtn.classList.add('cart-btn-pop');
+        setTimeout(() => cartBtn.classList.remove('cart-btn-pop'), 400);
+    }, 550);
 }
 
 function scrollCatalog(dir) {
@@ -423,7 +455,14 @@ function addToCart(id) {
     refreshCard(id);
     updateCartUI();
     saveCart();
-    openCartPanel();
+    /* animación: volar al carrito */
+    const card = document.getElementById(`card-${id}`);
+    const visual = card?.querySelector('.card-visual');
+    flyToCart(visual || card);
+    /* efecto "added" en la card */
+    card?.classList.add('card-added-anim');
+    setTimeout(() => card?.classList.remove('card-added-anim'), 600);
+    setTimeout(openCartPanel, 600);
 }
 
 function refreshCard(id) {

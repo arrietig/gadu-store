@@ -597,6 +597,64 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
 .slide-next { right:.5rem; }
 .slide-btn:disabled { opacity:.25; pointer-events:none; }
 
+/* ── Foto real en card ── */
+.card-visual-photo {
+    position: relative;
+    overflow: hidden;
+}
+.card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    padding: 6px 8px 0;
+    transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+.wine-card:hover .card-photo {
+    transform: scale(1.06) translateY(-4px);
+}
+.card-photo-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.06) 50%, transparent 60%);
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    transition: background-position .7s ease;
+    pointer-events: none;
+}
+.wine-card:hover .card-photo-shine {
+    background-position: -200% 0;
+}
+
+/* ── Animación agregar al pedido ── */
+@keyframes card-added {
+    0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(160,120,48,0); }
+    30%  { transform: scale(1.03); box-shadow: 0 0 0 6px rgba(160,120,48,.35); }
+    100% { transform: scale(1); box-shadow: 0 0 0 14px rgba(160,120,48,0); }
+}
+.card-added-anim {
+    animation: card-added .55s ease forwards;
+}
+
+/* ── Punto volador al carrito ── */
+.cart-fly-dot {
+    position: fixed;
+    width: 14px; height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform .52s cubic-bezier(.55,0,.45,1), opacity .52s ease;
+}
+
+/* ── Pop del ícono carrito ── */
+@keyframes cart-pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+.cart-btn-pop { animation: cart-pop .38s ease; }
+
 /* WINE CARD */
 .wine-card {
     min-width:210px; max-width:210px;

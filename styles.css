@@ -613,23 +613,7 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
 .wine-card:hover .card-photo {
     transform: scale(1.08);
 }
-.card-photo-shine {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        115deg,
-        transparent 30%,
-        rgba(255,255,255,.12) 50%,
-        transparent 70%
-    );
-    background-size: 250% 100%;
-    background-position: 250% 0;
-    transition: background-position .65s ease;
-    pointer-events: none;
-}
-.wine-card:hover .card-photo-shine {
-    background-position: -250% 0;
-}
+.card-photo-shine { display: none; }
 /* overlay oscuro sutil para legibilidad */
 .card-visual-photo::after {
     content: '';

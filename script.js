@@ -548,9 +548,9 @@ function sendWhatsAppOrder() {
     const items = Object.values(cart);
     if (!items.length) return;
     const total = items.reduce((s,i)=>s+i.wine.price*i.qty, 0);
-    let msg = '🍷 *Pedido — Gadu Store*\n\n';
+    let msg = '*Pedido — GaDu*\n\n';
     items.forEach(({wine,qty}) => { msg += `• ${wine.name} ×${qty} = ${fmtPrice(wine.price*qty)}\n`; });
-    msg += `\n*Total: ${fmtPrice(total)}*\n\n¡Hola! Me gustaría hacer este pedido 🙌`;
+    msg += `\n*Total: ${fmtPrice(total)}*\n\n¡Hola! Me gustaría hacer este pedido.`;
     window.open(`https://wa.me/595993330038?text=${encodeURIComponent(msg)}`,'_blank');
 }
 

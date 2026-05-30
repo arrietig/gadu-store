@@ -894,6 +894,12 @@ main { display:flex; flex-direction:column; gap:6px; padding:6px 0; }
     font-size:.8rem; color:rgba(228,224,215,.6);
     letter-spacing:.06em;
 }
+.contact-map-link {
+    color:rgba(228,224,215,.6); text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
+}
+.contact-map-link:hover { color:var(--gold); border-color:var(--gold); }
 .contact-ctas { display:flex; flex-direction:column; gap:1rem; }
 .cta-wa, .cta-ig {
     display:flex; align-items:center; justify-content:center;
